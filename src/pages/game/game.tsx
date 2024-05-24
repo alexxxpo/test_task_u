@@ -1,33 +1,34 @@
-import { useUnit } from "effector-react"
-import { $scores, onBankClicked, onRightAnswer, onWrongAnswer } from "./model"
-import { Ceil } from "../../shared/ceil/ceil"
+import { useUnit } from "effector-react";
+import { Scale } from "../../widgets/scale"
+import { $scores, onBankClicked, onRightAnswer, onWrongAnswer } from "./model";
+import styles from './game.module.css'
+import { OutputWindow } from "../../shared/output_window";
 
 export function Game() {
-    const [{ bank, current, scale }, onBank, onRight, onWrong] = useUnit([$scores, onBankClicked, onRightAnswer, onWrongAnswer])
+    const [{bank, current}, onBank, onRight, onWrong] = useUnit([$scores, onBankClicked, onRightAnswer, onWrongAnswer])
 
     const keyPressHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        switch (e.key) {
-            case 'y':
+
+        switch (e.code) {
+            case 'KeyY':
                 onRight()
                 break;
-            case 'n':
+            case 'KeyN':
                 onWrong()
                 break;
-            case 'b':
+            case 'KeyB':
                 onBank()
-                break;
-            default:
                 break;
         }
     }
-
     return (
         <div
-            className=""
+            className={styles.page}
+            onKeyUp={keyPressHandler}
             tabIndex={0}
-            onKeyUp={keyPressHandler}>
-            {scale.map((score, index) => <Ceil score={score} active={current === index} key={index} />)}
-            {bank}, {current}
+        >
+            <Scale />
+            <OutputWindow value={bank} title="Банк"/>
         </div>
     )
 }

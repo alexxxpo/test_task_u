@@ -1,4 +1,4 @@
-import './ceil.css'
+import styles from './ceil.module.css'
 
 interface ICeilProps {
     score: number;
@@ -7,8 +7,8 @@ interface ICeilProps {
 
 export const Ceil = ({ score, active }: ICeilProps) => {
     return (
-        <div className={`ceil__container ${active ? 'active' : ''}`}>
-            <span className="ceil">
+        <div className={`${styles.container} ${active ? styles.active : ''}`}>
+            <span className={styles.ceil}>
                 {score}
             </span>
         </div>

@@ -3,12 +3,13 @@
     color: #fff;    
 }
 
-.ceil__container.active {
+.container.active {
     background: #a62d3f;
 }
 
-.ceil__container {
+.container {
     padding: 5px 10px;
+    margin-bottom: 20px;
     width: 50px;
     background: #2d50a5;
     text-align: center;
