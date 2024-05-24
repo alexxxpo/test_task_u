@@ -1,5 +1,5 @@
 import './App.css'
-import { Game } from "./pages/game/game"
+import { Game } from "../pages/game"
 
 
 function App() {
