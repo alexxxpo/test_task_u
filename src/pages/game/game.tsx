@@ -5,7 +5,7 @@ import styles from './game.module.css'
 import { OutputWindow } from "../../shared/output_window";
 
 export function Game() {
-    const [{bank, current}, onBank, onRight, onWrong] = useUnit([$scores, onBankClicked, onRightAnswer, onWrongAnswer])
+    const [{bank}, onBank, onRight, onWrong] = useUnit([$scores, onBankClicked, onRightAnswer, onWrongAnswer])
 
     const keyPressHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
 

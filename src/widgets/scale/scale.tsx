@@ -4,7 +4,7 @@ import { Ceil } from "../../shared/ceil";
 import styles from './scale.module.css'
 
 export function Scale() {
-    const [{ bank, current, scale }] = useUnit([$scores])
+    const [{ current, scale }] = useUnit([$scores])
 
     return (
         <div
