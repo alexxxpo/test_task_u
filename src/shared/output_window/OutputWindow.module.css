@@ -1,0 +1,13 @@
+.window {
+    padding: 15px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    background: #2d50a5;
+}
+
+.value {
+    font-size: 22px;
+}

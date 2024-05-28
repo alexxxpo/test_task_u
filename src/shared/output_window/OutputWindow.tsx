@@ -1,4 +1,4 @@
-import styles from './OutputWindew.module.css'
+import styles from './OutputWindow.module.css'
 interface IOutputWindowProps {
     value: string | number;
     title?: string;
@@ -7,8 +7,8 @@ interface IOutputWindowProps {
 export function OutputWindow({value, title}: IOutputWindowProps) {
     return (
         <div className={styles.window}>
-            <h3>{title}</h3>
-            {value}
+            <h2>{title}</h2>
+            <span className={styles.value}>{value}</span>
         </div>
     )
 }

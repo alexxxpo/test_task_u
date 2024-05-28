@@ -10,3 +10,7 @@
     outline: none;
     border: none;
 }
+
+.inner {
+    padding: 20px;
+}
