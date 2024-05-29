@@ -1,4 +1,5 @@
 import { createEvent, createStore } from "effector";
+import { TIMER_SP } from "../../shared/const";
 
 export const onRightAnswer = createEvent();
 export const onWrongAnswer = createEvent();
@@ -16,13 +17,15 @@ const createScale = (scores: number, initialValue = 2): number[] => {
 
 const scale = createScale(8);
 
-export const $scores = createStore({
+const defaultState = {
   current: 0,
   scale,
   bank: 0,
   start: false,
-  timer: 60
-});
+  timer: TIMER_SP
+}
+
+export const $scores = createStore(defaultState);
 
 $scores.on(onRightAnswer, (scores) =>
   scores.current < scores.scale.length - 1
@@ -51,5 +54,5 @@ $scores.on(onTimerStart, (scores) => ({
 }) )
 $scores.on(onTimerEnd, (scores) => ({
 	...scores,
-	timer: 10
+	timer: TIMER_SP
 }) )
