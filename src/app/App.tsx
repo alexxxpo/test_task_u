@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import styles from "./App.module.css";
 import { Game } from "../pages/game";
 import { useUnit } from "effector-react";
@@ -17,13 +17,7 @@ function App() {
     onWrongAnswer,
   ]);
 
-  const af = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    af?.current?.focus();
-  }, [start]);
-
-  const keyPressHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  function keyPressHandler(e: KeyboardEvent) {
     if (start) {
       switch (e.code) {
         case "KeyY":
@@ -39,8 +33,14 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (start) document.addEventListener('keyup', keyPressHandler)
+    return () => document.removeEventListener('keyup', keyPressHandler)
+  }, [start]);
+
+
   return (
-    <div className={styles.app} tabIndex={0} onKeyUp={keyPressHandler} ref={af}>
+    <div className={styles.app} tabIndex={0}>
       <div className={styles.container}>
         <h1 className={styles.title}>Слабое звено</h1>
         <Game />
